@@ -11,7 +11,7 @@ const Header = (props) => {
 
   return (
     <header>
-      <h1 className="title">Starter Kit</h1>
+      <h1 className="title">Rick and Morty</h1>
       <Links productId={props.productId} />
       <button title="atrás" onClick={handleBackBtn}>
         Volver atrás
