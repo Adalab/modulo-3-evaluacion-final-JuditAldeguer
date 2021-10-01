@@ -1,7 +1,6 @@
 //React / npm
 import { useEffect, useState } from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
-import { v4 as uuid } from 'uuid'; // al generar id={uuid()}
 import PropTypes from 'prop-types';
 //Services
 import callToApi from '../services/api';
@@ -21,6 +20,8 @@ import Loading from './secondary-components/Loading';
 function App() {
   //useState
   const [listCharacters, setListCharacters] = useState([]);
+  const [filteredListCharacters, setFilteredListCharacters] =
+    useState(listCharacters);
   const [searchWord, setSearchWord] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -29,10 +30,15 @@ function App() {
     setIsLoading(true);
     callToApi().then((response) => {
       setListCharacters(response);
+      //console.log(listCharacters);
       setIsLoading(false);
+      setSearchWord(' ');
     });
+  }, []);
+
+  useEffect(() => {
+    getFilteredData();
   }, [searchWord]);
-  console.log(listCharacters);
 
   //useRef
   const routeData = useRouteMatch('/character-detail/:characterId');
@@ -40,6 +46,20 @@ function App() {
   //pendiente introducir numero id con find() tras callToApi
 
   //handles
+  const handleSearchWord = (name, value) => {
+    console.log(` ${name}: ${value}`);
+    setSearchWord(value);
+  };
+
+  const getFilteredData = () => {
+    const newData = listCharacters.filter((character) =>
+      character.name
+        .toLocaleLowerCase()
+        .includes(searchWord.toLocaleLowerCase())
+    );
+    setFilteredListCharacters(newData);
+    //console.log(filteredListCharacters);
+  };
 
   //renders
 
@@ -49,8 +69,8 @@ function App() {
       <main>
         <Loading loading={isLoading} />
         <h1>Bienvenid@, encuentra tu(s) personaje(s) favorito(s)</h1>
-        <Filters></Filters>
-        <CharacterList />
+        <Filters value={searchWord} handleSearchWord={handleSearchWord} />
+        <CharacterList data={filteredListCharacters} searchWord={searchWord} />
         <Switch>
           <Route path="/" exact></Route>
           <Route path="/character-detail/:characterId">

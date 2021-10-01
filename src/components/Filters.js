@@ -1,7 +1,15 @@
+import Input from './secondary-components/Input';
+
 const Filters = (props) => {
   return (
     <form action="/" onSubmit={(ev) => ev.preventDefault()}>
-      <input type="text" name="" id="" />
+      <Input
+        labelText="Buscador: "
+        id="search-word"
+        inputName="search-word"
+        value={props.searchWord}
+        handleChange={props.handleSearchWord}
+      />
     </form>
   );
 };

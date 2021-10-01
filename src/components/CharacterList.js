@@ -1,15 +1,19 @@
 import CharacterCard from './CharacterCard';
+import { v4 as uuid } from 'uuid'; // al generar id={uuid()}
 
 const CharacterList = (props) => {
-  //hacer map para que se muestre cada caracter
-  return (
-    <ul>
-      Listado
-      <li>
-        <CharacterCard />
-      </li>
-    </ul>
-  );
+  //render
+  const renderList = () => {
+    return props.data.map((character) => {
+      return (
+        <li key={uuid()}>
+          <CharacterCard character={character} />
+        </li>
+      );
+    });
+  };
+
+  return <ul>{renderList()}</ul>;
 };
 
 export default CharacterList;
