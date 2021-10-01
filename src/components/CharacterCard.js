@@ -4,10 +4,9 @@ import '../styles/components/characterCards.scss';
 import { NavLink } from 'react-router-dom';
 
 const CharacterCard = (props) => {
-  console.log(props.character);
   return (
     <NavLink
-      to={`/character-detail/${props.characterId}`}
+      to={`/character/${props.characterId}`}
       title="Detalle del personaje"
       activeClassName="selected-link"
     >

@@ -30,7 +30,6 @@ function App() {
     setIsLoading(true);
     callToApi().then((response) => {
       setListCharacters(response);
-      //console.log(listCharacters);
       setIsLoading(false);
       setSearchWord(' ');
     });
@@ -46,11 +45,11 @@ function App() {
   const selectedCharacter = listCharacters.find(
     (character) => character.uuid === characterId
   );
+  console.log(characterId);
   console.log(selectedCharacter);
 
   //handles
   const handleSearchWord = (name, value) => {
-    console.log(` ${name}: ${value}`);
     setSearchWord(value);
   };
 

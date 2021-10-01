@@ -4,7 +4,7 @@ const CharacterDetail = (props) => {
   if (props.character === undefined) {
     return (
       <ModalWindow title="Usuario no encontrado">
-        <p>Búscate la vida</p>
+        <p>Revisa que la dirección sea correcta</p>
       </ModalWindow>
     );
   } else {
