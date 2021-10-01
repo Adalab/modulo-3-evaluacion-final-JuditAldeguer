@@ -41,9 +41,12 @@ function App() {
   }, [searchWord]);
 
   //useRef
-  const routeData = useRouteMatch('/character-detail/:characterId');
+  const routeData = useRouteMatch('/character/:characterId');
   const characterId = routeData !== null ? routeData.params.productId : '';
-  //pendiente introducir numero id con find() tras callToApi
+  const selectedCharacter = listCharacters.find(
+    (character) => character.uuid === characterId
+  );
+  console.log(selectedCharacter);
 
   //handles
   const handleSearchWord = (name, value) => {
@@ -58,7 +61,6 @@ function App() {
         .includes(searchWord.toLocaleLowerCase())
     );
     setFilteredListCharacters(newData);
-    //console.log(filteredListCharacters);
   };
 
   //renders
@@ -73,8 +75,11 @@ function App() {
         <CharacterList data={filteredListCharacters} searchWord={searchWord} />
         <Switch>
           <Route path="/" exact></Route>
-          <Route path="/character-detail/:characterId">
-            <CharacterDetail characterId={characterId} />
+          <Route path="/character/:characterId">
+            <CharacterDetail
+              character={selectedCharacter}
+              characterId={characterId}
+            />
           </Route>
           <Route>
             <NotFoundPage />

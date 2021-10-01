@@ -1,14 +1,25 @@
+import ModalWindow from './secondary-components/ModalWindow';
+
 const CharacterDetail = (props) => {
-  return (
-    <article>
-      <h2>
-        <strong>Details - More info about:</strong>
-        Name
-      </h2>
-      <img src="" alt="personaje" />
-      <p>info</p>
-    </article>
-  );
+  if (props.character === undefined) {
+    return (
+      <ModalWindow title="Usuario no encontrado">
+        <p>Búscate la vida</p>
+      </ModalWindow>
+    );
+  } else {
+    return (
+      <ModalWindow title={props.character.name}>
+        <article className="card">
+          <img src={props.character.image} alt="personaje" />
+          <h2>
+            <strong>{props.character.name}</strong>
+          </h2>
+          <p>{props.character.species}</p>
+        </article>
+      </ModalWindow>
+    );
+  }
 };
 
 export default CharacterDetail;
