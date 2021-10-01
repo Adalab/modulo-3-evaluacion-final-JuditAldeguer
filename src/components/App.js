@@ -1,6 +1,7 @@
+//React / npm
 import { useEffect, useState } from 'react';
-import { v4 as uuid } from 'uuid'; // al generar id={uuid()}
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
+import { v4 as uuid } from 'uuid'; // al generar id={uuid()}
 import PropTypes from 'prop-types';
 //Services
 import callToApi from '../services/api';
@@ -11,29 +12,47 @@ import '../styles/App.scss';
 //Components
 import Header from './Header';
 import Footer from './Footer';
-import ProductDetail from './/secondary-components/ProductDetail';
 import NotFoundPage from './secondary-components/NotFoundPage';
+import CharacterDetail from './CharacterDetail';
+import Filters from './Filters';
+import CharacterList from './CharacterList';
 
 function App() {
-  const routeData = useRouteMatch('/product-detail/:id');
-  const productId = routeData !== null ? routeData.params.productId : '';
+  //useState
+
+  //useEffect
+  useEffect(
+    callToApi().then((response) => {
+      console.log(response);
+    }),
+    []
+  );
+  //useRef
+  const routeData = useRouteMatch('/character-detail/:characterId');
+  const characterId = routeData !== null ? routeData.params.productId : '';
+  //pendiente introducir numero id con find() tras callToApi
+
+  //handles
+
+  //renders
 
   return (
     <div className="page">
-      <Header productId="321" />{' '}
-      {/* pendiente introducir numero id con find() tras callToApi */}
-      <Switch>
-        <Route path="/" exact>
-          <h1>BienvenidaA a la pagina de inicio</h1>
-          <p>Catálogo</p>
-        </Route>
-        <Route path="/product-detail/">
-          <ProductDetail productId={productId} />
-        </Route>
-        <Route>
-          <NotFoundPage />
-        </Route>
-      </Switch>
+      <Header productId="321" />
+      <main>
+        <h1>Bienvenid@, encuentra tu(s) personaje(s) favorito(s)</h1>
+        <Filters></Filters>
+        <CharacterList />
+        <Switch>
+          <Route path="/" exact></Route>
+          <Route path="/character-detail/:characterId">
+            <CharacterDetail characterId={characterId} />
+          </Route>
+          <Route>
+            <NotFoundPage />
+          </Route>
+        </Switch>
+      </main>
       <Footer />
     </div>
   );

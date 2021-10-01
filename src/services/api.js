@@ -1,17 +1,12 @@
-// Fichero src/services/api.js
+// posteriormente modificar url a https://rickandmortyapi.com/documentation/#get-all-characters
+
 const callToApi = () => {
-  // Llamamos al API
-  return fetch('https://swapi.dev/api/people/5')
+  return fetch(
+    '//raw.githubusercontent.com/Adalab/rick-y-morty/master/data/rick-y-morty.json'
+  )
     .then((response) => response.json())
     .then((response) => {
-      // Cuando responde el API podemos limpiar los datos aquí
-      const result = {
-        name: response.name,
-        birthYear: response.birth_year,
-        height: response.height,
-        mass: response.mass,
-        eyeColor: response.eye_color,
-      };
+      const result = response.results;
       return result;
     });
 };
