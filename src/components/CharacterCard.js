@@ -1,21 +1,22 @@
 //Styles
-import '../styles/components/links.scss';
+import '../styles/components/characterCards.scss';
 //component
 import { NavLink } from 'react-router-dom';
 
 const CharacterCard = (props) => {
+  console.log(props.character);
   return (
     <NavLink
       to={`/character-detail/${props.characterId}`}
       title="Detalle del personaje"
       activeClassName="selected-link"
     >
-      <article>
-        <img src="" alt="personaje" />
+      <article className="card">
+        <img src={props.character.image} alt="personaje" />
         <h2>
-          <strong>Name</strong>
+          <strong>{props.character.name}</strong>
         </h2>
-        <p>Especie</p>
+        <p>{props.character.species}</p>
       </article>
     </NavLink>
   );
