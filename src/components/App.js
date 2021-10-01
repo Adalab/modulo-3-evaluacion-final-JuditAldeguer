@@ -24,7 +24,7 @@ function App() {
       {/* pendiente introducir numero id con find() tras callToApi */}
       <Switch>
         <Route path="/" exact>
-          <h1>Bienvenida a la pagina de inicio</h1>
+          <h1>BienvenidaA a la pagina de inicio</h1>
           <p>Catálogo</p>
         </Route>
         <Route path="/product-detail/">
