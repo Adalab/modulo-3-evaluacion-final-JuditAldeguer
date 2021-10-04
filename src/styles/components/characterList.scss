@@ -1,7 +1,9 @@
+@import '../core/variables.scss';
+
 .list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background-color: rgb(72, 168, 115);
+  background-color: $dark_aqua;
 }

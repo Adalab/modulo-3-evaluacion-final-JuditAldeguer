@@ -11,4 +11,17 @@ const callToApi = () => {
     });
 };
 
-export default callToApi;
+const callToApiEpisodes = (numEpisode) => {
+  return fetch(`${numEpisode}`)
+    .then((response) => response.json())
+    .then((response) => {
+      const result = response.name;
+      return result;
+    });
+};
+
+const objectToExport = {
+  callToApi: callToApi,
+  callToApiEpisodes: callToApiEpisodes,
+};
+export default objectToExport;

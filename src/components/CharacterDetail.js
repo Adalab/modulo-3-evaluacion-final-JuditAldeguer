@@ -1,16 +1,31 @@
-import ModalWindow from './secondary-components/ModalWindow';
+//React
+import { useEffect, useState } from 'react';
+//Services
+import api from '../services/api';
+//styles
 import '../styles/components/characterDetail.scss';
+//components
+import ModalWindow from './secondary-components/ModalWindow';
 
 const CharacterDetail = (props) => {
+  const [firstEpisode, setFirstEpisode] = useState('');
+
   const iconStatus = () => {
     if (props.character.status === 'Dead') {
-      return <i class="fas fa-skull-crossbones"></i>;
+      return <i className="fas fa-skull-crossbones"></i>;
     } else if (props.character.status === 'Alive') {
-      return <i class="fas fa-heartbeat"></i>;
+      return <i className="fas fa-heartbeat"></i>;
     } else {
-      return <i class="fas fa-question-circle"></i>;
+      return <i className="fas fa-question-circle"></i>;
     }
   };
+
+  //useEffect
+  useEffect(() => {
+    api.callToApiEpisodes(props.character.episode[0]).then((response) => {
+      setFirstEpisode(response);
+    });
+  }, [props.character]);
 
   if (props.character === undefined) {
     return (
@@ -51,6 +66,9 @@ const CharacterDetail = (props) => {
             <li>
               <strong>Episodes: </strong>
               {props.character.episode.length}
+            </li>
+            <li>
+              <strong>Firts seen in: </strong> {firstEpisode}
             </li>
           </ul>
         </article>

@@ -1,10 +1,14 @@
 @import '../core/variables.scss';
 
-footer {
+.footer {
   position: fixed;
   bottom: 0;
   text-align: center;
   color: $white;
   width: 100vw;
   background-color: #21240d9a;
+  &--link {
+    color: $aqua;
+    text-decoration: underline;
+  }
 }

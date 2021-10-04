@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 //Services
-import callToApi from '../services/api';
+import api from '../services/api';
 import ls from '../services/local-storage.js'; //localStorage
 import date from '../services/date'; //fecha usamos date: date.getCurrentDate()
 //Styles
@@ -23,22 +23,28 @@ function App() {
   const [filteredListCharacters, setFilteredListCharacters] =
     useState(listCharacters);
   const [searchWord, setSearchWord] = useState('');
+  const [searchSpecies, setSearchSpecies] = useState('');
+  const [searchGender, setSearchGender] = useState('');
+  const [searchStatus, setSearchStatus] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   //useEffect
   useEffect(() => {
     setIsLoading(true);
-    callToApi().then((response) => {
+    api.callToApi().then((response) => {
       const data = response.map((character) => (character.id = uuid()));
       setListCharacters(response);
       setIsLoading(false);
       setSearchWord(' ');
+      setSearchSpecies('');
+      setSearchGender('');
+      setSearchStatus('');
     });
   }, []);
 
   useEffect(() => {
     getFilteredData();
-  }, [searchWord]);
+  }, [searchWord, searchSpecies, searchGender, searchStatus]);
 
   //useRef
   const routeData = useRouteMatch('/character/:characterId');
@@ -50,28 +56,82 @@ function App() {
   console.log(selectedCharacter);
 
   //handles
-  const handleSearchWord = (name, value) => {
-    setSearchWord(value);
+  const handleSearch = (name, value) => {
+    if (name === 'search-word') {
+      setSearchWord(value);
+    }
+    if (name === 'search-species') {
+      setSearchSpecies(value);
+    }
+    if (name === 'get-gender') {
+      if (value === 'all') {
+        setSearchGender('');
+      } else {
+        setSearchGender(value);
+      }
+    }
+    if (name === 'get-status') {
+      if (value === 'all') {
+        setSearchStatus('');
+      } else {
+        setSearchStatus(value);
+      }
+    }
   };
 
   const getFilteredData = () => {
-    const newData = listCharacters.filter((character) =>
-      character.name
-        .toLocaleLowerCase()
-        .includes(searchWord.toLocaleLowerCase())
-    );
+    const newData = listCharacters
+      .filter((character) =>
+        character.name
+          .toLocaleLowerCase()
+          .includes(searchWord.toLocaleLowerCase())
+      )
+      .filter((character) =>
+        character.species
+          .toLocaleLowerCase()
+          .includes(searchSpecies.toLocaleLowerCase())
+      )
+      .filter((character) =>
+        character.gender
+          .toLocaleLowerCase()
+          .includes(searchGender.toLocaleLowerCase())
+      )
+      .filter((character) =>
+        character.status
+          .toLocaleLowerCase()
+          .includes(searchStatus.toLocaleLowerCase())
+      );
+    setByOrder(newData);
     setFilteredListCharacters(newData);
+  };
+
+  const setByOrder = (newData) => {
+    newData.sort(function (a, b) {
+      if (a.name > b.name) {
+        return 1;
+      }
+      if (a.name < b.name) {
+        return -1;
+      }
+      return 0;
+    });
   };
 
   //renders
 
+  //html
   return (
     <div className="page">
-      <Header productId="321" />
+      <Header />
       <main>
         <Loading loading={isLoading} />
 
-        <Filters value={searchWord} handleSearchWord={handleSearchWord} />
+        <Filters
+          value={searchWord}
+          handleSearch={handleSearch}
+          searchGender={searchGender}
+          searchStatus={searchStatus}
+        />
         <CharacterList
           data={filteredListCharacters}
           searchWord={searchWord}
