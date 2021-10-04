@@ -45,7 +45,7 @@ function App() {
   const selectedCharacter = listCharacters.find(
     (character) => character.uuid === characterId
   );
-  console.log(characterId);
+  console.log(`CharacterID: ${characterId}`);
   console.log(selectedCharacter);
 
   //handles
