@@ -2,6 +2,16 @@ import ModalWindow from './secondary-components/ModalWindow';
 import '../styles/components/characterDetail.scss';
 
 const CharacterDetail = (props) => {
+  const iconStatus = () => {
+    if (props.character.status === 'Dead') {
+      return <i class="fas fa-skull-crossbones"></i>;
+    } else if (props.character.status === 'Alive') {
+      return <i class="fas fa-heartbeat"></i>;
+    } else {
+      return <i class="fas fa-question-circle"></i>;
+    }
+  };
+
   if (props.character === undefined) {
     return (
       <ModalWindow title="Usuario no encontrado">
@@ -20,7 +30,7 @@ const CharacterDetail = (props) => {
           <ul className="detail--list">
             <li>
               <strong>Status: </strong>
-              {props.character.status}
+              {iconStatus()}
             </li>
             <li>
               <strong>Species: </strong>

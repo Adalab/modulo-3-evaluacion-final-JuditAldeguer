@@ -10,7 +10,6 @@ const ModalWindow = (props) => {
           <ButtonGetBack className="button_back" />
           <header className="modal__header">
             <h2 className="modal__title">{props.title}</h2>
-            <span className="modal__close icon fas fa-times"></span>
           </header>
           <section>{props.children}</section>
         </div>
