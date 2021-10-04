@@ -14,14 +14,14 @@ const Filters = (props) => {
           id="search-word"
           inputName="search-word"
           value={props.searchWord}
-          handleChange={props.handleSearchWord}
+          handleChange={props.handleSearch}
         />
         <Input
           labelText="Search species: "
           id="search-species"
           inputName="search-species"
-          value={props.searchWord} //pendiente junto a funciones--------------------
-          handleChange={props.handleSearchWord}
+          value={props.searchSpecies}
+          handleChange={props.handleSearch} //pendiente junto a funciones--------------------
         />
       </fieldset>
       <fieldset>

@@ -23,6 +23,8 @@ function App() {
   const [filteredListCharacters, setFilteredListCharacters] =
     useState(listCharacters);
   const [searchWord, setSearchWord] = useState('');
+  const [searchSpecies, setSearchSpecies] = useState('');
+
   const [isLoading, setIsLoading] = useState(false);
 
   //useEffect
@@ -33,12 +35,13 @@ function App() {
       setListCharacters(response);
       setIsLoading(false);
       setSearchWord(' ');
+      setSearchSpecies('');
     });
   }, []);
 
   useEffect(() => {
     getFilteredData();
-  }, [searchWord]);
+  }, [searchWord, searchSpecies]);
 
   //useRef
   const routeData = useRouteMatch('/character/:characterId');
@@ -50,16 +53,27 @@ function App() {
   console.log(selectedCharacter);
 
   //handles
-  const handleSearchWord = (name, value) => {
-    setSearchWord(value);
+  const handleSearch = (name, value) => {
+    if (name === 'search-word') {
+      setSearchWord(value);
+    }
+    if (name === 'search-species') {
+      setSearchSpecies(value);
+    }
   };
 
   const getFilteredData = () => {
-    const newData = listCharacters.filter((character) =>
-      character.name
-        .toLocaleLowerCase()
-        .includes(searchWord.toLocaleLowerCase())
-    );
+    const newData = listCharacters
+      .filter((character) =>
+        character.name
+          .toLocaleLowerCase()
+          .includes(searchWord.toLocaleLowerCase())
+      )
+      .filter((character) =>
+        character.species
+          .toLocaleLowerCase()
+          .includes(searchSpecies.toLocaleLowerCase())
+      );
     setByOrder(newData);
     setFilteredListCharacters(newData);
   };
@@ -78,13 +92,14 @@ function App() {
 
   //renders
 
+  //html
   return (
     <div className="page">
       <Header />
       <main>
         <Loading loading={isLoading} />
 
-        <Filters value={searchWord} handleSearchWord={handleSearchWord} />
+        <Filters value={searchWord} handleSearch={handleSearch} />
         <CharacterList
           data={filteredListCharacters}
           searchWord={searchWord}
