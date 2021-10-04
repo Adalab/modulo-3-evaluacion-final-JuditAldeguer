@@ -4,10 +4,10 @@ import '../../styles/components/notFoundPage.scss';
 const NotFoundPage = () => {
   return (
     <div className="not_found_page">
-      <ModalWindow title="ERROR: La pagina que buscas no existe">
+      <ModalWindow title="ERROR: The page you are looking for does not exist">
         <p>
-          Revisa que la dirección de la página
-          <span className="cursiva"> (url)</span> sea correcta.
+          Check that the site address
+          <span className="cursiva"> (url)</span> is correct.
         </p>
       </ModalWindow>
     </div>
