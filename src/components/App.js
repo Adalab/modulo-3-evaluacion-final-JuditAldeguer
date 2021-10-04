@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 //Services
-import callToApi from '../services/api';
+import api from '../services/api';
 import ls from '../services/local-storage.js'; //localStorage
 import date from '../services/date'; //fecha usamos date: date.getCurrentDate()
 //Styles
@@ -30,7 +30,7 @@ function App() {
   //useEffect
   useEffect(() => {
     setIsLoading(true);
-    callToApi().then((response) => {
+    api.callToApi().then((response) => {
       const data = response.map((character) => (character.id = uuid()));
       setListCharacters(response);
       setIsLoading(false);
