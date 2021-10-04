@@ -1,0 +1,13 @@
+.detail {
+  display: flex;
+  text-align: left;
+  width: fit-content;
+  margin: 1rem;
+  padding: 10px;
+  &--img {
+    margin-right: 4px;
+  }
+  &--list {
+    margin-left: 4px;
+  }
+}
