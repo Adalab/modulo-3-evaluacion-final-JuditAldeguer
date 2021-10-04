@@ -11,23 +11,22 @@ Aqui dejo las anotaciones para la evaluación final y también más a bajo he de
 - Dónde localizarlo  
    Mi trabajo se encuentra en el repositorio de Github y puedes encontrar facilmente el link a Github Page que da acceso a la última versión de mi **rama master** en el apartado _About_. [Acceder a la web](http://beta.adalab.es/modulo-3-evaluacion-final-JuditAldeguer/)
 
-  Deseo destacar que he seguido un **diseño responsive**, el cual varia al pasar de versión mobil a tablet.
+  Deseo destacar que he seguido un **diseño responsive**, el cual varia al pasar de versión mobil a tablet y a desktop.
 
   Por otro lado, como podrás ver, este trabajo consta de dos ramas **rama dev** para todo lo que está en desarrollo y **rama master** que contiene el producto final.
 
 - Qué es  
-  Se trata de una aplicación web que sirve de Archivador interactivo de tus Clubs favoritos. He añadido estilo y todas las fucionalidades solicitadas sumandole un botón reset:
+  Se trata de una aplicación web que sirve de Buscador interactivo de tus Personajes favoritos de Ricky & Morty. He añadido estilo y todas las fucionalidades solicitadas sumandole algunos bonus:
 
-  - Obtener información de los clubs iniciales y guardarlos en el estado con **useState**
-  - Pintar los clubs iniciales
-  - Posibilidade de **añadir** clubs
-  - Posibilidad de **filtrar** según horario
-  - Posibilidade de **borar** clubs uno a uno
+  - Obtener información de los personajes iniciales con **fetch** y guardarlos en el estado con **useState**
+  - Pintar los personajes iniciales
+  - Posibilidad de **filtrar** según nombre, género, especie y estado (vivo / muerto / desconocido)
+  - **Ordenados** por orden alfabético
 
   Añadidos de forma proactiva:
 
-  - Posibilidade de **borar todos** los clubs con el botón Reset
-  - **Guardar en localStorage** los clubs con el uso de **useEffect**
+  - Posibilidade de **borar todos** los personajes con el botón Reset
+  - **Guardar en localStorage** los personajes con el uso de **useEffect**
   - **Importar desde localStorage** en caso que no sea la primera vez que el/la usuario/a se conecta con el uso de **useEffect**
 
 - Qué partes tiene  
