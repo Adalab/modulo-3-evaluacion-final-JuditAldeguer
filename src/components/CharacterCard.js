@@ -6,8 +6,8 @@ import { NavLink } from 'react-router-dom';
 const CharacterCard = (props) => {
   return (
     <NavLink
-      to={`/character/${props.characterId}`}
-      title="Detalle del personaje"
+      to={`./character/${props.character.id}`}
+      title="Detail"
       activeClassName="selected-link"
     >
       <article className="card">

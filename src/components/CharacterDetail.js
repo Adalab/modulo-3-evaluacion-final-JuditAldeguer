@@ -14,20 +14,28 @@ const CharacterDetail = (props) => {
           <img src={props.character.image} alt="personaje" />
           <ul>
             <li>
-              <strong>Status:</strong>
-              {props.character.alive}
+              <strong>Status: </strong>
+              {props.character.status}
             </li>
             <li>
-              <strong>Species:</strong>
+              <strong>Species: </strong>
               {props.character.species}
             </li>
             <li>
-              <strong>Origin:</strong>
+              <strong>Gender: </strong>
+              {props.character.gender}
+            </li>
+            <li>
+              <strong>Location: </strong>
+              {props.character.location.name}
+            </li>
+            <li>
+              <strong>Origin: </strong>
               {props.character.species}
             </li>
             <li>
-              <strong>Episodes:</strong>
-              {props.character.alive}
+              <strong>Episodes: </strong>
+              {props.character.episode.length}
             </li>
           </ul>
         </article>
