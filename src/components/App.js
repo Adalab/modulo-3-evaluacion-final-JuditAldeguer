@@ -60,15 +60,27 @@ function App() {
         .toLocaleLowerCase()
         .includes(searchWord.toLocaleLowerCase())
     );
-    const inOrderData = newData.sort();
-    setFilteredListCharacters(inOrderData);
+    setByOrder(newData);
+    setFilteredListCharacters(newData);
+  };
+
+  const setByOrder = (newData) => {
+    newData.sort(function (a, b) {
+      if (a.name > b.name) {
+        return 1;
+      }
+      if (a.name < b.name) {
+        return -1;
+      }
+      return 0;
+    });
   };
 
   //renders
 
   return (
     <div className="page">
-      <Header productId="321" />
+      <Header />
       <main>
         <Loading loading={isLoading} />
 
