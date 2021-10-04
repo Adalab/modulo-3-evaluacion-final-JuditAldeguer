@@ -2,11 +2,9 @@
 
 footer {
   position: fixed;
-  right: 0;
   bottom: 0;
-  padding-left: 1rem;
-  color: rgb(54, 53, 53);
+  text-align: center;
+  color: $white;
   width: 100vw;
-  background-color: rgb(209, 199, 199);
-  border: grey solid 1px;
+  background-color: #21240d9a;
 }
