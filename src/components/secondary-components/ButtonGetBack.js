@@ -1,10 +1,12 @@
+import '../../styles/components/buttonGetBack.scss';
+
 const ButtonGetBack = (props) => {
   const handleBackBtn = (ev) => {
     ev.preventDefault();
     window.history.back();
   };
   return (
-    <button title="atrás" onClick={handleBackBtn}>
+    <button className="button_back" title="atrás" onClick={handleBackBtn}>
       Volver atrás
     </button>
   );
