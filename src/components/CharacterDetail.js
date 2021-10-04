@@ -15,7 +15,24 @@ const CharacterDetail = (props) => {
           <h2>
             <strong>{props.character.name}</strong>
           </h2>
-          <p>{props.character.species}</p>
+          <ul>
+            <li>
+              <strong>Status:</strong>
+              {props.character.alive}
+            </li>
+            <li>
+              <strong>Species:</strong>
+              {props.character.species}
+            </li>
+            <li>
+              <strong>Origin:</strong>
+              {props.character.species}
+            </li>
+            <li>
+              <strong>Episodes:</strong>
+              {props.character.alive}
+            </li>
+          </ul>
         </article>
       </ModalWindow>
     );
