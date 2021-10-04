@@ -91,11 +91,7 @@ function App() {
           .toLocaleLowerCase()
           .includes(searchSpecies.toLocaleLowerCase())
       )
-      .filter((character) =>
-        character.gender
-          .toLocaleLowerCase()
-          .includes(searchGender.toLocaleLowerCase())
-      )
+      .filter((character) => character.gender.includes(searchGender))
       .filter((character) =>
         character.status
           .toLocaleLowerCase()
