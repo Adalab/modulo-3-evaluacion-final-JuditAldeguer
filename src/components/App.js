@@ -24,7 +24,8 @@ function App() {
     useState(listCharacters);
   const [searchWord, setSearchWord] = useState('');
   const [searchSpecies, setSearchSpecies] = useState('');
-
+  const [searchGender, setSearchGender] = useState('');
+  const [searchStatus, setSearchStatus] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   //useEffect
@@ -36,12 +37,14 @@ function App() {
       setIsLoading(false);
       setSearchWord(' ');
       setSearchSpecies('');
+      setSearchGender('');
+      setSearchStatus('');
     });
   }, []);
 
   useEffect(() => {
     getFilteredData();
-  }, [searchWord, searchSpecies]);
+  }, [searchWord, searchSpecies, searchGender, searchStatus]);
 
   //useRef
   const routeData = useRouteMatch('/character/:characterId');
@@ -60,6 +63,20 @@ function App() {
     if (name === 'search-species') {
       setSearchSpecies(value);
     }
+    if (name === 'get-gender') {
+      if (value === 'all') {
+        setSearchGender('');
+      } else {
+        setSearchGender(value);
+      }
+    }
+    if (name === 'get-status') {
+      if (value === 'all') {
+        setSearchStatus('');
+      } else {
+        setSearchStatus(value);
+      }
+    }
   };
 
   const getFilteredData = () => {
@@ -73,6 +90,16 @@ function App() {
         character.species
           .toLocaleLowerCase()
           .includes(searchSpecies.toLocaleLowerCase())
+      )
+      .filter((character) =>
+        character.gender
+          .toLocaleLowerCase()
+          .includes(searchGender.toLocaleLowerCase())
+      )
+      .filter((character) =>
+        character.status
+          .toLocaleLowerCase()
+          .includes(searchStatus.toLocaleLowerCase())
       );
     setByOrder(newData);
     setFilteredListCharacters(newData);
@@ -99,7 +126,12 @@ function App() {
       <main>
         <Loading loading={isLoading} />
 
-        <Filters value={searchWord} handleSearch={handleSearch} />
+        <Filters
+          value={searchWord}
+          handleSearch={handleSearch}
+          searchGender={searchGender}
+          searchStatus={searchStatus}
+        />
         <CharacterList
           data={filteredListCharacters}
           searchWord={searchWord}

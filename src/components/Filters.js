@@ -21,13 +21,14 @@ const Filters = (props) => {
           id="search-species"
           inputName="search-species"
           value={props.searchSpecies}
-          handleChange={props.handleSearch} //pendiente junto a funciones--------------------
+          handleChange={props.handleSearch}
         />
       </fieldset>
       <fieldset>
         <InputOptions
           id="get-gender"
           inputName="get-gender"
+          searchOption={props.searchGender}
           value1="all"
           optionText1="Chose a GENDER"
           value2="Male"
@@ -36,11 +37,12 @@ const Filters = (props) => {
           optionText3="Female"
           value4="unknown"
           optionText4="Unknown"
-          handleChange={props.handleSearchWord}
+          handleChange={props.handleSearch}
         />
         <InputOptions
           id="get-status"
           inputName="get-status"
+          searchOption={props.searchStatus}
           value1="all"
           optionText1="Chose a STATUS"
           value2="Alive"
@@ -49,7 +51,7 @@ const Filters = (props) => {
           optionText3="Dead"
           value4="unknown"
           optionText4="Unknown"
-          handleChange={props.handleSearchWord}
+          handleChange={props.handleSearch}
         />
       </fieldset>
     </form>
