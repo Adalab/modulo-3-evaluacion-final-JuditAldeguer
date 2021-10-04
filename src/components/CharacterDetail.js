@@ -12,9 +12,6 @@ const CharacterDetail = (props) => {
       <ModalWindow title={props.character.name}>
         <article className="card">
           <img src={props.character.image} alt="personaje" />
-          <h2>
-            <strong>{props.character.name}</strong>
-          </h2>
           <ul>
             <li>
               <strong>Status:</strong>
