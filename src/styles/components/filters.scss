@@ -1,0 +1,19 @@
+@import '../core/variables.scss';
+@import '../core/mixins.scss';
+
+.form {
+  background-color: $dark_green_blue;
+  color: $white;
+  padding-bottom: 1rem;
+  &--h1,
+  &--h2 {
+    padding-bottom: 0.5rem;
+    text-align: center;
+  }
+}
+
+fieldset {
+  display: flex;
+  border: none;
+  justify-content: space-evenly;
+}

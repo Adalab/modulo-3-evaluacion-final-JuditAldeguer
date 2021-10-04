@@ -1,5 +1,7 @@
 //importar las propTypes
 import PropTypes from 'prop-types';
+//styles
+import '../../styles/components/input.scss';
 
 const Input = (props) => {
   //handle
@@ -8,9 +10,10 @@ const Input = (props) => {
   };
 
   return (
-    <>
-      <label htmlFor={props.id}>{props.labelText}</label>
+    <label className="label" htmlFor={props.id}>
+      {props.labelText}
       <input
+        className="input"
         id={props.id}
         type={props.inputType}
         name={props.inputName}
@@ -18,7 +21,7 @@ const Input = (props) => {
         value={props.searchWord}
         onChange={handleChange}
       />
-    </>
+    </label>
   );
 };
 // DefalutProps

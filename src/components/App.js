@@ -1,8 +1,7 @@
 //React / npm
 import { useEffect, useState } from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
-import { v4 as uuid } from 'uuid'; // al generar id={uuid()}
-import PropTypes from 'prop-types';
+import { v4 as uuid } from 'uuid';
 //Services
 import callToApi from '../services/api';
 import ls from '../services/local-storage.js'; //localStorage
@@ -71,7 +70,7 @@ function App() {
       <Header productId="321" />
       <main>
         <Loading loading={isLoading} />
-        <h1>Bienvenid@, encuentra tu(s) personaje(s) favorito(s)</h1>
+
         <Filters value={searchWord} handleSearchWord={handleSearchWord} />
         <CharacterList
           data={filteredListCharacters}

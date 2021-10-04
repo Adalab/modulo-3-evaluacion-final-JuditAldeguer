@@ -5,8 +5,8 @@ import logo from '../images/Rick_and_Morty_-_logo.png';
 
 const Header = (props) => {
   return (
-    <header>
-      <img src={logo} alt="Rick and Morty" />
+    <header className="header">
+      <img className="header--img" src={logo} alt="Rick and Morty" />
     </header>
   );
 };
