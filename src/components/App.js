@@ -1,6 +1,7 @@
 //React / npm
 import { useEffect, useState } from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
+import { v4 as uuid } from 'uuid'; // al generar id={uuid()}
 import PropTypes from 'prop-types';
 //Services
 import callToApi from '../services/api';
@@ -29,6 +30,7 @@ function App() {
   useEffect(() => {
     setIsLoading(true);
     callToApi().then((response) => {
+      const data = response.map((character) => (character.id = uuid()));
       setListCharacters(response);
       setIsLoading(false);
       setSearchWord(' ');
@@ -41,10 +43,10 @@ function App() {
 
   //useRef
   const routeData = useRouteMatch('/character/:characterId');
-  const characterId = routeData !== null ? routeData.params.productId : '';
-  const selectedCharacter = listCharacters.find(
-    (character) => character.uuid === characterId
-  );
+  const characterId = routeData !== null ? routeData.params.characterId : '';
+  const selectedCharacter = listCharacters.find((character) => {
+    return character.id === characterId;
+  });
   console.log(`CharacterID: ${characterId}`);
   console.log(selectedCharacter);
 
@@ -71,7 +73,11 @@ function App() {
         <Loading loading={isLoading} />
         <h1>Bienvenid@, encuentra tu(s) personaje(s) favorito(s)</h1>
         <Filters value={searchWord} handleSearchWord={handleSearchWord} />
-        <CharacterList data={filteredListCharacters} searchWord={searchWord} />
+        <CharacterList
+          data={filteredListCharacters}
+          searchWord={searchWord}
+          characterId={characterId}
+        />
         <Switch>
           <Route path="/" exact></Route>
           <Route path="/character/:characterId">
