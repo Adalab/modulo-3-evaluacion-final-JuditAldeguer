@@ -60,7 +60,8 @@ function App() {
         .toLocaleLowerCase()
         .includes(searchWord.toLocaleLowerCase())
     );
-    setFilteredListCharacters(newData);
+    const inOrderData = newData.sort();
+    setFilteredListCharacters(inOrderData);
   };
 
   //renders

@@ -5,8 +5,9 @@ import '../styles/components/filters.scss';
 const Filters = (props) => {
   return (
     <form className="form" action="/" onSubmit={(ev) => ev.preventDefault()}>
-      <h1 className="form--h1">Wellcome!!</h1>
-      <h2 className="form--h2">Here you can find your favorites characters</h2>
+      <h1 className="form--h1">
+        Filter and quickly locate your favorite characters
+      </h1>
       <fieldset>
         <Input
           labelText="Search name: "

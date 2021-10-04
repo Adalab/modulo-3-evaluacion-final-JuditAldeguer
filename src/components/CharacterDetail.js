@@ -4,11 +4,11 @@ import '../styles/components/characterDetail.scss';
 const CharacterDetail = (props) => {
   const iconStatus = () => {
     if (props.character.status === 'Dead') {
-      return <i class="fas fa-skull-crossbones"></i>;
+      return <i className="fas fa-skull-crossbones"></i>;
     } else if (props.character.status === 'Alive') {
-      return <i class="fas fa-heartbeat"></i>;
+      return <i className="fas fa-heartbeat"></i>;
     } else {
-      return <i class="fas fa-question-circle"></i>;
+      return <i className="fas fa-question-circle"></i>;
     }
   };
 

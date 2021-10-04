@@ -15,9 +15,10 @@ const InputOptions = (props) => {
       id={props.id}
       className="select_input"
       htmlFor={props.id}
+      defaultValue={props.value1}
       onChange={handleChange}
     >
-      <option value={props.value1} disabled selected>
+      <option value={props.value1} disabled>
         {props.optionText1}
       </option>
       <option value={props.value2}> {props.optionText2}</option>
