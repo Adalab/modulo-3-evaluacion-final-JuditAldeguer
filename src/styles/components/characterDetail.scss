@@ -1,13 +1,14 @@
 .detail {
-  display: flex;
-  text-align: left;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
   width: fit-content;
   margin: 1rem;
-  padding: 10px;
   &--img {
-    margin-right: 4px;
+    grid-column: 1/2;
   }
   &--list {
-    margin-left: 4px;
+    grid-column: 2/3;
   }
 }

@@ -1,0 +1,29 @@
+@import '../core/variables.scss';
+@import '../core/mixins.scss';
+
+.form {
+  display: grid;
+  background-color: $dark_color;
+  color: $white;
+  padding-bottom: 1rem;
+  justify-items: center;
+  &--h1,
+  &--h2 {
+    padding-bottom: 0.5rem;
+    text-align: center;
+  }
+  @include tablet {
+    padding: 1rem 2rem 0 2rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  @include desktop {
+    padding: 1rem 8rem 0 8rem;
+  }
+}
+
+fieldset {
+  display: flex;
+  border: none;
+  justify-content: space-evenly;
+}

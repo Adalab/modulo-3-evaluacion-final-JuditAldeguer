@@ -1,8 +1,15 @@
 @import '../core/variables.scss';
+@import '../core/mixins.scss';
 
-header {
-  background-color: black;
+.header {
+  background-color: $black;
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+  &--img {
+    width: 300px;
+    @include tablet {
+      width: auto;
+    }
+  }
 }
