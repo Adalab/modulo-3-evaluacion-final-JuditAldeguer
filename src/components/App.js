@@ -124,40 +124,38 @@ function App() {
   //html
   return (
     <div className="page">
-      <div className="stars">
-        <div className="twinkling">
-          <div className="clouds">
-            <Header />
-            <main id="main">
-              <Loading loading={isLoading} />
+      <div className="stars"></div>
+      <div className="twinkling"></div>
+      <div className="clouds">
+        <Header />
+        <main id="main">
+          <Loading loading={isLoading} />
 
-              <Filters
-                value={searchWord}
-                handleSearch={handleSearch}
-                searchGender={searchGender}
-                searchStatus={searchStatus}
-              />
-              <CharacterList
-                data={filteredListCharacters}
-                searchWord={searchWord}
+          <Filters
+            value={searchWord}
+            handleSearch={handleSearch}
+            searchGender={searchGender}
+            searchStatus={searchStatus}
+          />
+          <CharacterList
+            data={filteredListCharacters}
+            searchWord={searchWord}
+            characterId={characterId}
+          />
+          <Switch>
+            <Route path="/" exact></Route>
+            <Route path="/character/:characterId">
+              <CharacterDetail
+                character={selectedCharacter}
                 characterId={characterId}
               />
-              <Switch>
-                <Route path="/" exact></Route>
-                <Route path="/character/:characterId">
-                  <CharacterDetail
-                    character={selectedCharacter}
-                    characterId={characterId}
-                  />
-                </Route>
-                <Route>
-                  <NotFoundPage />
-                </Route>
-              </Switch>
-            </main>
-            <Footer />
-          </div>
-        </div>
+            </Route>
+            <Route>
+              <NotFoundPage />
+            </Route>
+          </Switch>
+        </main>
+        <Footer />
       </div>
     </div>
   );
