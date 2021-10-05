@@ -23,8 +23,25 @@ const getCurrentDate = () => {
   return `${day} ${month}. ${year}`;
 };
 
+const getCurrentTime = () => {
+  const momentoActual = new Date();
+  const hora = momentoActual.getHours();
+  const minuto = momentoActual.getMinutes();
+  const segundo = momentoActual.getSeconds();
+  const horaImprimible = hora + ' : ' + minuto + ' : ' + segundo;
+  //setCurrentTime(horaImprimible);
+  return horaImprimible;
+};
+
+//useEffect
+const actualiseTime = () => {
+  setTimeout(getCurrentTime, 1000);
+};
+
 const objToExport = {
   getCurrentDate: getCurrentDate,
+  getCurrentTime: getCurrentTime,
+  actualiseTime: actualiseTime,
 };
 
 export default objToExport;

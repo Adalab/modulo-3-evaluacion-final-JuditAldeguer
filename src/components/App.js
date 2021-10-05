@@ -4,8 +4,8 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 //Services
 import api from '../services/api';
+import date from '../services/date';
 import ls from '../services/local-storage.js'; //localStorage
-import date from '../services/date'; //fecha usamos date: date.getCurrentDate()
 //Styles
 import '../styles/App.scss';
 //Components
@@ -119,7 +119,7 @@ function App() {
   return (
     <div className="page">
       <Header />
-      <main>
+      <main id="main">
         <Loading loading={isLoading} />
 
         <Filters
