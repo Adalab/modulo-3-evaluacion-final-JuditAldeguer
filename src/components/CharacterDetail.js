@@ -12,11 +12,68 @@ const CharacterDetail = (props) => {
 
   const iconStatus = () => {
     if (props.character.status === 'Dead') {
-      return <i className="fas fa-skull-crossbones"></i>;
+      return (
+        <>
+          <p>
+            <strong>Status: </strong>
+            <i className="fas fa-skull-crossbones"></i>;
+            {` ${props.character.status}`}
+          </p>
+        </>
+      );
     } else if (props.character.status === 'Alive') {
-      return <i className="fas fa-heartbeat"></i>;
+      return (
+        <>
+          <p>
+            <strong>Status: </strong>
+            <i className="fas fa-heartbeat"></i>;{` ${props.character.status}`}
+          </p>
+        </>
+      );
     } else {
-      return <i className="fas fa-question-circle"></i>;
+      return (
+        <>
+          <p>
+            <strong>Status: </strong>
+            <i className="fas fa-question-circle"></i>
+            {` ${props.character.status}`}
+          </p>
+        </>
+      );
+    }
+  };
+
+  const speciesResult = () => {
+    if (props.character.species === 'Human') {
+      return (
+        <>
+          <p>
+            <strong>Species: </strong>
+            <i class="fas fa-user-alt"></i>
+            {` ${props.character.species}`}
+          </p>
+        </>
+      );
+    } else if (props.character.species === 'Alien') {
+      return (
+        <>
+          <p>
+            <strong>Species: </strong>
+            <i class="fab fa-reddit-alien"></i>
+            {` ${props.character.species}`}
+          </p>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <p>
+            <strong>Species: </strong>
+            <i class="fas fa-user-alt-slash"></i>
+            {` ${props.character.species}`}
+          </p>
+        </>
+      );
     }
   };
 
@@ -45,32 +102,36 @@ const CharacterDetail = (props) => {
             alt="personaje"
           />
           <ul className="detail--list">
+            <li>{iconStatus()}</li>
+            <li>{speciesResult()}</li>
             <li>
-              <strong>Status: </strong>
-              {iconStatus()}
+              <p>
+                <strong>Gender: </strong>
+                {props.character.gender}
+              </p>
             </li>
             <li>
-              <strong>Species: </strong>
-              {props.character.species}
+              <p>
+                <strong>Location: </strong>
+                {props.character.location.name}
+              </p>
             </li>
             <li>
-              <strong>Gender: </strong>
-              {props.character.gender}
+              <p>
+                <strong>Origin: </strong>
+                {props.character.species}
+              </p>
             </li>
             <li>
-              <strong>Location: </strong>
-              {props.character.location.name}
+              <p>
+                <strong>Episodes: </strong>
+                {props.character.episode.length}
+              </p>
             </li>
             <li>
-              <strong>Origin: </strong>
-              {props.character.species}
-            </li>
-            <li>
-              <strong>Episodes: </strong>
-              {props.character.episode.length}
-            </li>
-            <li>
-              <strong>Firts seen in: </strong> {firstEpisode}
+              <p>
+                <strong>Firts seen in: </strong> {firstEpisode}
+              </p>
             </li>
           </ul>
         </article>
