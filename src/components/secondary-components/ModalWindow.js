@@ -6,11 +6,11 @@ const ModalWindow = (props) => {
     <div className="modal">
       <div className="modal__dialog">
         <div className="modal__content">
-          <ButtonGetBack className="button_back" />
           <header className="modal__header">
-            <h2 className="modal__title">{props.title}</h2>
+            <ButtonGetBack className="button_back" />
+            <h2 className="modal__header--title">{props.title}</h2>
           </header>
-          <section>{props.children}</section>
+          <section className="modal__section">{props.children}</section>
         </div>
       </div>
     </div>
