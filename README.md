@@ -16,29 +16,39 @@ Aqui dejo las anotaciones para la evaluación final y también más a bajo he de
   Por otro lado, como podrás ver, este trabajo consta de dos ramas **rama dev** para todo lo que está en desarrollo y **rama master** que contiene el producto final.
 
 - Qué es  
-  Se trata de una aplicación web que sirve de Buscador interactivo de tus Personajes favoritos de Ricky & Morty. He añadido estilo y todas las fucionalidades solicitadas sumandole algunos bonus:
+  Se trata de una aplicación web que sirve de Buscador interactivo de tus Personajes favoritos de Ricky & Morty. He añadido estilo y todas las fucionalidades solicitadas y los bonus:
 
   - Obtener información de los personajes iniciales con **fetch** y guardarlos en el estado con **useState**
   - Pintar los personajes iniciales
   - Posibilidad de **filtrar** según nombre, género, especie y estado (vivo / muerto / desconocido)
+  - Para una mejor estructura, está desglosado en **Componentes**
   - **Ordenados** por orden alfabético
+  - Tres visualizaciones distintas usando **Route, Switch, useRouteMatch**
+  - Uso de **ModalWindows** para las distintas visualizaciones
+  - **Loading** durante el proceso de petición al servidor
+  - Informar con una visalización distinta si no existe la url **notFoundPage** o si no existe el personaje.
+  - Mantenimiento de variables de estado **useState** de las búsquedas realizadas
+  - ostrar **iconos** en en _characterDetail_ para el estado
+  - Usar **Grid** por dar estilo
+  - Introducir **defaultProps** y **propTypes** en los inputs
 
   Añadidos de forma proactiva:
 
-  - Posibilidade de **borar todos** los personajes con el botón Reset
-  - **Guardar en localStorage** los personajes con el uso de **useEffect**
-  - **Importar desde localStorage** en caso que no sea la primera vez que el/la usuario/a se conecta con el uso de **useEffect**
+  - -visualización de una **animación** del espacio
+  - **ButtonGetBack** que te redirige atrás en el historial con el uso de **window.history.back();**
 
 - Qué partes tiene  
   Contiene tres partes claras:
 
-  1.  El _header_
-      - Sección introductoria que incluye el título de la página.
-  2.  El _main_
-      - Archivador de clubes + flitro + reset
-      - Añadir nuevo club
-  3.  El _footer_
-      - Copy-right
+  1. El _header_
+     - Sección introductoria que incluye el título de la página.
+  2. El _main_
+     - Loading
+     - Filtros para la búsqueda
+     - Visualización de los personajes
+     - Otras visualizaciones dependiendo de dónde se clique: notFoundPage, characterDetail, CharacterNotFound
+  3. El _footer_
+     - Copy-right
 
 - Qué tecnologías usa
   He usado los lenguages HTML, CSS, JavaScript y React.  
@@ -81,7 +91,7 @@ I´ve just finished a Bootcamp in [Adalab](https://adalab.es/contacto/) and lear
 
 ---
 
-## Technologies:
+## Technologies & Tools
 
 <img align="left" alt="HTML5" width="30px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png" />
 
@@ -102,10 +112,6 @@ I´ve just finished a Bootcamp in [Adalab](https://adalab.es/contacto/) and lear
 <img align="left" alt="Sass" width="30px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/sass/sass.png" />
 
 <img align="left" alt="nodejs" width="40" height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" />
-<br>
-<br>
-
-## Tools
 
 <img align="left" alt="Github" width="30px" src="https://image.flaticon.com/icons/png/512/25/25231.png" />
 
