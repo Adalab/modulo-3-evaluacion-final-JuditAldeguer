@@ -13,7 +13,7 @@ const InputOptions = (props) => {
     <select
       name={props.inputName}
       id={props.id}
-      className="select_input"
+      className="select_input z_index"
       htmlFor={props.id}
       defaultValue={props.searchOption}
       onChange={handleChange}

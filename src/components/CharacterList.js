@@ -6,7 +6,7 @@ const CharacterList = (props) => {
   const renderList = () => {
     return props.data.map((character) => {
       return (
-        <li key={character.id}>
+        <li className="z_index" key={character.id}>
           <CharacterCard
             character={character}
             characterId={props.characterId}

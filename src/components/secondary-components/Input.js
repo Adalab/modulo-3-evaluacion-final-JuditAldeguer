@@ -10,7 +10,7 @@ const Input = (props) => {
   };
 
   return (
-    <label className="label" htmlFor={props.id}>
+    <label className="label z_index" htmlFor={props.id}>
       {props.labelText}
       <input
         className="input"
