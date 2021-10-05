@@ -1,7 +1,11 @@
 @import '../core/variables.scss';
+@import '../core/animation.scss';
 
 body {
   height: 100vh;
   background: #000 url('https://image.ibb.co/mjnygo/stars.png') repeat top
     center;
+}
+.z_index {
+  z-index: 3;
 }

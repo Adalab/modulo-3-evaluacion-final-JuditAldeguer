@@ -6,10 +6,7 @@ import logo from '../images/Rick_and_Morty_-_logo.png';
 const Header = (props) => {
   return (
     <header className="header">
-      <img className="header--img" src={logo} alt="Rick and Morty" />
-      <div className="stars"></div>
-      <div className="twinkling"></div>
-      <div className="clouds"></div>
+      <img className="header--img z_index" src={logo} alt="Rick and Morty" />
     </header>
   );
 };
