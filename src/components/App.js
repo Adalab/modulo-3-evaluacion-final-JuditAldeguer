@@ -1,7 +1,6 @@
 //React / npm
 import { useEffect, useState } from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
-import { v4 as uuid } from 'uuid';
 //Services
 import api from '../services/api';
 //Styles
@@ -30,7 +29,6 @@ function App() {
   useEffect(() => {
     setIsLoading(true);
     api.callToApi().then((response) => {
-      response.map((character) => (character.id = uuid()));
       setListCharacters(response);
       setIsLoading(false);
       setSearchWord(' ');
@@ -46,7 +44,8 @@ function App() {
 
   //useRef
   const routeData = useRouteMatch('/character/:characterId');
-  const characterId = routeData !== null ? routeData.params.characterId : '';
+  const characterId =
+    routeData !== null ? parseInt(routeData.params.characterId) : '';
   const selectedCharacter = listCharacters.find((character) => {
     return character.id === characterId;
   });
