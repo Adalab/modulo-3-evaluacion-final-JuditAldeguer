@@ -49,7 +49,7 @@ const CharacterDetail = (props) => {
         <>
           <p>
             <strong>Species: </strong>
-            <i class="fas fa-user-alt"></i>
+            <i className="fas fa-user-alt"></i>
             {` ${props.character.species}`}
           </p>
         </>
@@ -59,7 +59,7 @@ const CharacterDetail = (props) => {
         <>
           <p>
             <strong>Species: </strong>
-            <i class="fab fa-reddit-alien"></i>
+            <i className="fab fa-reddit-alien"></i>
             {` ${props.character.species}`}
           </p>
         </>
@@ -69,7 +69,7 @@ const CharacterDetail = (props) => {
         <>
           <p>
             <strong>Species: </strong>
-            <i class="fas fa-user-alt-slash"></i>
+            <i className="fas fa-user-alt-slash"></i>
             {` ${props.character.species}`}
           </p>
         </>
