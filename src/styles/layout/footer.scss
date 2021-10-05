@@ -3,33 +3,38 @@
 
 .footer {
   position: fixed;
-  display: grid;
-  grid-template-rows: 1fr 2fr;
-  justify-content: space-between;
+  display: flex;
+  flex-direction: column-reverse;
   text-align: center;
   bottom: 0;
   color: $white;
   width: 100vw;
+  padding-top: 0.5rem;
   background-color: #21240d9a;
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-around;
+  }
   &--link {
     color: $aqua;
     text-decoration: underline;
   }
-  @media all and (min-width: 425px) {
-    grid-template-rows: 1fr 1fr;
-  }
   section {
     width: 100vw;
+    @include tablet {
+      width: fit-content;
+    }
   }
   .form_footer {
     display: inline-block;
     font-size: 0.9rem;
     .clock {
-      background-color: Black;
-      color: White;
+      background-color: $soft_black;
+      color: $white;
       font-family: Verdana, Arial, Helvetica;
       text-align: center;
       width: min-content;
+      border-radius: 6px;
     }
   }
 }

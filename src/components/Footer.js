@@ -19,8 +19,18 @@ const Footer = (props) => {
 
   return (
     <footer className="footer">
+      <section>
+        Copyright&copy; Made with ❤️ by Judit Aldeguer using{' '}
+        <a
+          className="footer--link"
+          href="https://es.reactjs.org/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          React
+        </a>
+      </section>
       <section className="section_clock">
-        <strong>Time: </strong>
         {`${date.getCurrentDate()} `}
         <form className="form_footer">
           <input
@@ -32,17 +42,6 @@ const Footer = (props) => {
             value={actualiseTime}
           />
         </form>
-      </section>
-      <section>
-        Copyright&copy; Made with ❤️ by Judit Aldeguer using{' '}
-        <a
-          className="footer--link"
-          href="https://es.reactjs.org/"
-          rel="noreferrer"
-          target="_blank"
-        >
-          React
-        </a>
       </section>
     </footer>
   );
