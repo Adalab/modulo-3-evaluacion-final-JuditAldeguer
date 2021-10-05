@@ -93,7 +93,18 @@ function App() {
           .includes(searchStatus.toLocaleLowerCase())
       );
     setByOrder(newData);
-    setFilteredListCharacters(newData);
+    if (newData.length === 0) {
+      const noData = [
+        {
+          name: 'There are no characters that match the requested filters.',
+          image: 'https://www.villas4u.com/assets/img/image-not-found.svg',
+          species: 'Not Found',
+        },
+      ];
+      setFilteredListCharacters(noData);
+    } else {
+      setFilteredListCharacters(newData);
+    }
   };
 
   const setByOrder = (newData) => {
