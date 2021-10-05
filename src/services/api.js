@@ -1,9 +1,7 @@
-// posteriormente modificar url a https://rickandmortyapi.com/documentation/#get-all-characters
+// info en https://rickandmortyapi.com/documentation/#get-all-characters --> https://rickandmortyapi.com/api/character or '//raw.githubusercontent.com/Adalab/rick-y-morty/master/data/rick-y-morty.json'
 
 const callToApi = () => {
-  return fetch(
-    '//raw.githubusercontent.com/Adalab/rick-y-morty/master/data/rick-y-morty.json'
-  )
+  return fetch('//rickandmortyapi.com/api/character')
     .then((response) => response.json())
     .then((response) => {
       const result = response.results;
