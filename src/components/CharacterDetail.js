@@ -22,15 +22,17 @@ const CharacterDetail = (props) => {
 
   //useEffect
   useEffect(() => {
-    api.callToApiEpisodes(props.character.episode[0]).then((response) => {
-      setFirstEpisode(response);
-    });
+    if (props.character !== undefined) {
+      api.callToApiEpisodes(props.character.episode[0]).then((response) => {
+        setFirstEpisode(response);
+      });
+    }
   }, [props.character]);
 
   if (props.character === undefined) {
     return (
-      <ModalWindow title="Usuario no encontrado">
-        <p className="detail">Revisa que la dirección sea correcta</p>
+      <ModalWindow title="Character not found">
+        <p className="detail">Please check that the address is correct</p>
       </ModalWindow>
     );
   } else {

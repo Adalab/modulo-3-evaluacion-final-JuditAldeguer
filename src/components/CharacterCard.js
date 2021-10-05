@@ -11,7 +11,7 @@ const CharacterCard = (props) => {
       activeClassName="selected-link"
     >
       <article className="card">
-        <img src={props.character.image} alt="personaje" />
+        <img src={props.character.image} alt="character" />
         <h2>
           <strong>{props.character.name}</strong>
         </h2>

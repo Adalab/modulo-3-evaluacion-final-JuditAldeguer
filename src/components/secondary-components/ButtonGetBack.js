@@ -7,7 +7,7 @@ const ButtonGetBack = (props) => {
   };
   return (
     <button className="button_back" title="atrás" onClick={handleBackBtn}>
-      Volver atrás
+      Go Back
     </button>
   );
 };
