@@ -90,7 +90,7 @@ const CharacterDetail = (props) => {
     return (
       <ModalWindow title="Character not found">
         <p className="not_found_detail">
-          Please check that the address is correct
+          Please check if the address is correct
         </p>
       </ModalWindow>
     );

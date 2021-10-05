@@ -6,7 +6,7 @@ const NotFoundPage = () => {
     <div className="not_found_page">
       <ModalWindow title="ERROR: The page you are looking for does not exist">
         <p>
-          Check that the site address
+          Check if the site address
           <span className="cursiva"> (url)</span> is correct.
         </p>
       </ModalWindow>
