@@ -4,8 +4,6 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 //Services
 import api from '../services/api';
-import date from '../services/date';
-import ls from '../services/local-storage.js'; //localStorage
 //Styles
 import '../styles/App.scss';
 //Components
@@ -32,7 +30,7 @@ function App() {
   useEffect(() => {
     setIsLoading(true);
     api.callToApi().then((response) => {
-      const data = response.map((character) => (character.id = uuid()));
+      response.map((character) => (character.id = uuid()));
       setListCharacters(response);
       setIsLoading(false);
       setSearchWord(' ');
@@ -52,8 +50,6 @@ function App() {
   const selectedCharacter = listCharacters.find((character) => {
     return character.id === characterId;
   });
-  console.log(`CharacterID: ${characterId}`);
-  console.log(selectedCharacter);
 
   //handles
   const handleSearch = (name, value) => {
