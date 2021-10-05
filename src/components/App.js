@@ -1,11 +1,8 @@
 //React / npm
 import { useEffect, useState } from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
-import { v4 as uuid } from 'uuid';
 //Services
 import api from '../services/api';
-import date from '../services/date';
-import ls from '../services/local-storage.js'; //localStorage
 //Styles
 import '../styles/App.scss';
 //Components
@@ -32,7 +29,6 @@ function App() {
   useEffect(() => {
     setIsLoading(true);
     api.callToApi().then((response) => {
-      const data = response.map((character) => (character.id = uuid()));
       setListCharacters(response);
       setIsLoading(false);
       setSearchWord(' ');
@@ -48,12 +44,11 @@ function App() {
 
   //useRef
   const routeData = useRouteMatch('/character/:characterId');
-  const characterId = routeData !== null ? routeData.params.characterId : '';
+  const characterId =
+    routeData !== null ? parseInt(routeData.params.characterId) : '';
   const selectedCharacter = listCharacters.find((character) => {
     return character.id === characterId;
   });
-  console.log(`CharacterID: ${characterId}`);
-  console.log(selectedCharacter);
 
   //handles
   const handleSearch = (name, value) => {
@@ -98,7 +93,18 @@ function App() {
           .includes(searchStatus.toLocaleLowerCase())
       );
     setByOrder(newData);
-    setFilteredListCharacters(newData);
+    if (newData.length === 0) {
+      const noData = [
+        {
+          name: 'There are no characters that match the requested filters.',
+          image: 'https://www.villas4u.com/assets/img/image-not-found.svg',
+          species: 'Not Found',
+        },
+      ];
+      setFilteredListCharacters(noData);
+    } else {
+      setFilteredListCharacters(newData);
+    }
   };
 
   const setByOrder = (newData) => {

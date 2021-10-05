@@ -24,24 +24,27 @@ const getCurrentDate = () => {
 };
 
 const getCurrentTime = () => {
-  const momentoActual = new Date();
-  const hora = momentoActual.getHours();
-  const minuto = momentoActual.getMinutes();
-  const segundo = momentoActual.getSeconds();
-  const horaImprimible = hora + ' : ' + minuto + ' : ' + segundo;
-  //setCurrentTime(horaImprimible);
-  return horaImprimible;
-};
+  const actualMoment = new Date();
+  let hour = actualMoment.getHours();
+  let minut = actualMoment.getMinutes();
+  let second = actualMoment.getSeconds();
+  const str_second = new String(second);
+  if (str_second.length === 1) {
+    second = '0' + second;
+  }
+  const str_minut = new String(minut);
+  if (str_minut.length === 1) minut = '0' + minut;
 
-//useEffect
-const actualiseTime = () => {
-  setTimeout(getCurrentTime, 1000);
+  const str_hour = new String(hour);
+  if (str_hour.length === 1) hour = '0' + hour;
+  const completedHour = hour + ' : ' + minut + ' : ' + second;
+
+  return completedHour;
 };
 
 const objToExport = {
   getCurrentDate: getCurrentDate,
   getCurrentTime: getCurrentTime,
-  actualiseTime: actualiseTime,
 };
 
 export default objToExport;

@@ -1,7 +1,22 @@
+import { useEffect, useState } from 'react';
 import date from '../services/date';
 import '../styles/layout/footer.scss';
 
 const Footer = (props) => {
+  const [actualiseTime, setActualiseTime] = useState('');
+  const [second, setSecond] = useState('');
+
+  const getActualSeconds = () => {
+    const actualMoment = new Date();
+    const seconds = actualMoment.getSeconds();
+    setSecond(seconds);
+  };
+
+  useEffect(() => {
+    getActualSeconds();
+    setActualiseTime(date.getCurrentTime());
+  }, [second]);
+
   return (
     <footer className="footer">
       <section>
@@ -15,16 +30,16 @@ const Footer = (props) => {
           React
         </a>
       </section>
-      <section>
-        <strong>Current time in Spain: </strong>
-        {date.getCurrentDate()}
-        <form name="form_reloj">
+      <section className="section_clock">
+        {`${date.getCurrentDate()} `}
+        <form className="form_footer">
           <input
             type="text"
-            name="reloj"
+            name="clock"
+            className="clock"
             size="7"
             disabled
-            value={date.getCurrentTime()}
+            value={actualiseTime}
           />
         </form>
       </section>

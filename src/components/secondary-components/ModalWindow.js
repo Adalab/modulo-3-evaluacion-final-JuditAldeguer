@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import '../../styles/components/modal_window.scss';
 import ButtonGetBack from './ButtonGetBack';
 
