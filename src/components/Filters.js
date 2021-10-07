@@ -1,5 +1,6 @@
 import Input from './secondary-components/Input';
 import InputOptions from './secondary-components/InputOptions';
+import InputCheck from './secondary-components/InputCheck';
 import '../styles/components/filters.scss';
 
 const Filters = (props) => {
@@ -48,6 +49,13 @@ const Filters = (props) => {
         optionText3="Dead"
         value4="unknown"
         optionText4="Unknown"
+        handleChange={props.handleSearch}
+      />
+      <InputCheck
+        labelText="Equal origin and location: "
+        id="search-equal"
+        inputName="search-equal"
+        value={props.searchEqual}
         handleChange={props.handleSearch}
       />
     </form>

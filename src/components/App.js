@@ -23,6 +23,7 @@ function App() {
   const [searchSpecies, setSearchSpecies] = useState('');
   const [searchGender, setSearchGender] = useState('');
   const [searchStatus, setSearchStatus] = useState('');
+  const [searchEqual, setSearchEqual] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   //useEffect
@@ -35,12 +36,13 @@ function App() {
       setSearchSpecies('');
       setSearchGender('');
       setSearchStatus('');
+      setSearchEqual(false);
     });
   }, []);
 
   useEffect(() => {
     getFilteredData();
-  }, [searchWord, searchSpecies, searchGender, searchStatus]);
+  }, [searchWord, searchSpecies, searchGender, searchStatus, searchEqual]);
 
   //useRef
   const routeData = useRouteMatch('/character/:characterId');
@@ -72,6 +74,9 @@ function App() {
         setSearchStatus(value);
       }
     }
+    if (name === 'search-equal') {
+      setSearchEqual(value);
+    }
   };
 
   const getFilteredData = () => {
@@ -91,7 +96,17 @@ function App() {
         character.status
           .toLocaleLowerCase()
           .includes(searchStatus.toLocaleLowerCase())
-      );
+      )
+      .filter((character) => {
+        if (searchEqual === true) {
+          return (
+            character.location.name.toLocaleLowerCase() ===
+            character.origin.name.toLocaleLowerCase()
+          );
+        } else {
+          return character;
+        }
+      });
     setByOrder(newData);
     if (newData.length === 0) {
       const noData = [
@@ -136,6 +151,7 @@ function App() {
             handleSearch={handleSearch}
             searchGender={searchGender}
             searchStatus={searchStatus}
+            searchEqual={searchEqual}
           />
           <CharacterList
             data={filteredListCharacters}
