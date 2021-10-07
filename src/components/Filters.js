@@ -51,13 +51,13 @@ const Filters = (props) => {
         optionText4="Unknown"
         handleChange={props.handleSearch}
       />
-      <InputCheck
+      {/* <InputCheck
         labelText="Equal origin and location: "
         id="search-equal"
         inputName="search-equal"
         value={props.searchEqual}
         handleChange={props.handleSearch}
-      />
+      /> */}
     </form>
   );
 };
