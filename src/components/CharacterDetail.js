@@ -126,13 +126,13 @@ const CharacterDetail = (props) => {
             </li>
             <li>
               <p>
-                <strong>Episodes: </strong>
-                {props.character.episode.length}
+                <strong>Firts seen in: </strong> {firstEpisode}
               </p>
             </li>
             <li>
               <p>
-                <strong>Firts seen in: </strong> {firstEpisode}
+                <strong>Episodes: </strong>
+                {props.character.episode.length}
               </p>
             </li>
           </ul>
