@@ -5,6 +5,8 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import api from '../services/api';
 //Styles
 import '../styles/App.scss';
+import webPreview from '../images/webPreview.png';
+import favicon from '../images/favicon.jpg';
 //Components
 import Header from './Header';
 import Footer from './Footer';
