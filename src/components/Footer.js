@@ -20,7 +20,7 @@ const Footer = (props) => {
   return (
     <footer className="footer">
       <section>
-        Made with ❤️ by{' '}
+        Made with ❤️ by &copy;{' '}
         <a
           className="footer--link"
           href="https://github.com/JuditAldeguer"
@@ -29,7 +29,7 @@ const Footer = (props) => {
         >
           Judit Aldeguer
         </a>{' '}
-        &copy; using{' '}
+        using{' '}
         <a
           className="footer--link"
           href="https://es.reactjs.org/"
