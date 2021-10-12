@@ -6,7 +6,7 @@ import api from '../services/api';
 //Styles
 import '../styles/App.scss';
 import webPreview from '../images/webPreview.png';
-import favicon from '../images/favicon.jpg';
+import favicon from '../images/favicon.png';
 //Components
 import Header from './Header';
 import Footer from './Footer';
