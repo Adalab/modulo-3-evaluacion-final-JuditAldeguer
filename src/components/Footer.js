@@ -3,19 +3,27 @@ import date from '../services/date';
 import '../styles/layout/footer.scss';
 
 const Footer = (props) => {
-  const [actualiseTime, setActualiseTime] = useState('');
-  const [second, setSecond] = useState('');
+  // const [actualiseTime, setActualiseTime] = useState('');
+  // const [second, setSecond] = useState('');
 
-  const getActualSeconds = () => {
-    const actualMoment = new Date();
-    const seconds = actualMoment.getSeconds();
-    setSecond(seconds);
-  };
+  // const getActualSeconds = () => {
+  //   const actualMoment = new Date();
+  //   const seconds = actualMoment.getSeconds();
+  //   setSecond(seconds);
+  // };
+  const [today, setDate] = useState(new Date());
 
   useEffect(() => {
-    getActualSeconds();
-    setActualiseTime(date.getCurrentTime());
-  }, [second]);
+    // getActualSeconds();
+    // setActualiseTime(date.getCurrentTime());
+    // }, [second]);
+    const timer = setInterval(() => {
+      setDate(new Date());
+    }, 1000);
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
 
   return (
     <footer className="footer">
@@ -40,7 +48,7 @@ const Footer = (props) => {
         </a>
       </section>
       <section className="section_clock">
-        {`${date.getCurrentDate()} `}
+        {/* {`${date.getCurrentDate()} `} */}
         <form className="form_footer">
           <input
             type="text"
@@ -48,8 +56,10 @@ const Footer = (props) => {
             className="clock"
             size="7"
             disabled
-            value={actualiseTime}
+            // value={actualiseTime}
+            value={date.getCurrentDate()}
           />
+          <span className="city-time">{date.getCurrentTime()}</span>
         </form>
       </section>
     </footer>
