@@ -27,8 +27,11 @@
     }
   }
   .form_footer {
-    display: inline-block;
-    font-size: 0.9rem;
+    display: none;
+    @include tablet {
+      display: inline-block;
+      font-size: 0.9rem;
+    }
     .clock {
       background-color: $soft_black;
       color: $white;
@@ -36,6 +39,7 @@
       text-align: center;
       width: min-content;
       border-radius: 6px;
+      margin: 0.2rem;
     }
   }
 }
