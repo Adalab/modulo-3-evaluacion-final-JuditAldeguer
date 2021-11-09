@@ -2,6 +2,7 @@
 @import '../core/mixins.scss';
 
 nav {
+  font-size: 1rem;
   display: flex;
   justify-content: center;
   margin: auto;
@@ -16,6 +17,9 @@ nav {
   );
   border: rgb(61, 59, 56) solid 2px;
   border-radius: calc(210px / 2);
+  @include tablet {
+    font-size: 1.2rem;
+  }
 }
 
 .hidden {
@@ -23,19 +27,27 @@ nav {
 }
 
 .nav__button {
+  font-size: 0.6rem;
   display: block;
   margin: 0 1rem;
   background-color: rgba(0, 255, 255, 0.466);
   border: rgb(153, 150, 145) solid 2px;
   border-radius: calc(210px / 2);
+  @include tablet {
+    font-size: 1rem;
+  }
 }
 .nav__p {
   &--input {
     margin: 0 1rem;
+    font-size: 0.8rem;
     text-align: center;
     width: 2.5rem;
     background-color: rgba(0, 255, 255, 0.466);
     border: rgb(153, 150, 145) solid 2px;
     border-radius: calc(10px / 2);
+    @include tablet {
+      font-size: 1rem;
+    }
   }
 }

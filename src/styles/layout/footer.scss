@@ -11,7 +11,7 @@
   color: $white;
   width: 100vw;
   padding-top: 0.5rem;
-  background-color: #21240d9a;
+  background-color: rgba(0, 26, 26, 0.308);
   @include tablet {
     flex-direction: row;
     justify-content: space-around;

@@ -191,6 +191,7 @@ function App() {
             handleNextPage={handleNextPage}
             handlePageInput={handlePageInput}
           />
+          <div className="div_footer"></div>
           <Switch>
             <Route path="/" exact></Route>
             <Route path="/character/:characterId">
