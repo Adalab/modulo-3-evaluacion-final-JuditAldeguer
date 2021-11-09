@@ -62,18 +62,10 @@ function App() {
       setSearchSpecies(value);
     }
     if (name === 'get-gender') {
-      if (value === 'all') {
-        setSearchGender('');
-      } else {
-        setSearchGender(value);
-      }
+      value === 'all' ? setSearchGender('') : setSearchGender(value);
     }
     if (name === 'get-status') {
-      if (value === 'all') {
-        setSearchStatus('');
-      } else {
-        setSearchStatus(value);
-      }
+      value === 'all' ? setSearchStatus('') : setSearchStatus(value);
     }
     if (name === 'search-equal') {
       setSearchEqual(value);
