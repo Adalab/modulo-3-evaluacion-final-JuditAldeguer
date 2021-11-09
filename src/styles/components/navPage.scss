@@ -1,7 +1,21 @@
+@import '../core/variables.scss';
+@import '../core/mixins.scss';
+
 nav {
   display: flex;
   justify-content: center;
+  margin: auto;
+  padding: 0.5rem 1rem;
+  width: fit-content;
   color: white;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 61, 61, 0.26) 0%,
+    rgba(2, 185, 185, 0.26) 50%,
+    rgba(0, 61, 61, 0.26) 100%
+  );
+  border: rgb(61, 59, 56) solid 2px;
+  border-radius: calc(210px / 2);
 }
 
 .hidden {
@@ -10,9 +24,18 @@ nav {
 
 .nav__button {
   display: block;
+  margin: 0 1rem;
+  background-color: rgba(0, 255, 255, 0.466);
+  border: rgb(153, 150, 145) solid 2px;
+  border-radius: calc(210px / 2);
 }
 .nav__p {
   &--input {
-    size: 1rem;
+    margin: 0 1rem;
+    text-align: center;
+    width: 2.5rem;
+    background-color: rgba(0, 255, 255, 0.466);
+    border: rgb(153, 150, 145) solid 2px;
+    border-radius: calc(10px / 2);
   }
 }

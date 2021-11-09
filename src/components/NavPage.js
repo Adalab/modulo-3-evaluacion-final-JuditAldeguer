@@ -28,7 +28,7 @@ const NavPage = (props) => {
           min="1"
           name="inputPage"
           id="inputPage"
-          placeholder="Ej. 2"
+          placeholder="01"
           value={props.pageNum}
         />
         of {props.numberOfPages}
