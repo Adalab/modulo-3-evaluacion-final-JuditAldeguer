@@ -11,3 +11,8 @@ nav {
 .nav__button {
   display: block;
 }
+.nav__p {
+  &--input {
+    size: 1rem;
+  }
+}

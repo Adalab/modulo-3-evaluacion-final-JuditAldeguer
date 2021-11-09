@@ -5,24 +5,28 @@ import '../styles/components/navPage.scss';
 
 const NavPage = (props) => {
   const handleChange = (ev) => {
-    ev.currentTarget.value > props.numberOfPages
-      ? props.handlePageInput(props.numberOfPages)
-      : props.handlePageInput(parseInt(ev.currentTarget.value));
+    if (ev.currentTarget.value > props.numberOfPages) {
+      props.handlePageInput(props.numberOfPages);
+    } else if (ev.currentTarget.value < 1) {
+      props.handlePageInput(parseInt(1));
+    } else {
+      props.handlePageInput(parseInt(ev.currentTarget.value));
+    }
   };
 
   return (
     <nav>
       <button
         className={props.pageNum === 1 ? 'hidden' : 'nav__button'}
-        onClick={props.handlePrevPage}
+        onClick={props.pageNum === 1 ? '' : props.handlePrevPage}
       >
         <i className="fas fa-angle-left"></i> Previous
       </button>
-      <p className="pages_nav_bar_index">
+      <p className="nav__p">
         Page
         <input
           onChange={handleChange}
-          className="input_page_number"
+          className="nav__p--input"
           type="number"
           max={props.numberOfPages}
           min="1"
@@ -36,11 +40,9 @@ const NavPage = (props) => {
 
       <button
         className={
-          props.pageNum === props.numberOfPages
-            ? 'hidden'
-            : 'pages_nav_bar_button'
+          props.pageNum === props.numberOfPages ? 'hidden' : 'nav__button'
         }
-        onClick={props.handleNextPage}
+        onClick={props.pageNum >= 1 ? props.handleNextPage : ''}
       >
         Next <i className="fas fa-angle-right"></i>
       </button>
@@ -50,13 +52,11 @@ const NavPage = (props) => {
 
 // PropTypes
 NavPage.propTypes = {
-  id: PropTypes.string,
-  labelText: PropTypes.string.isRequired,
-  inputType: PropTypes.string,
-  inputName: PropTypes.string.isRequired,
-  inputPlaceholder: PropTypes.string,
-  inputValue: PropTypes.string,
-  handleChange: PropTypes.func.isRequired,
+  pageNum: PropTypes.number,
+};
+
+NavPage.defaultProps = {
+  pageNum: 1,
 };
 
 export default NavPage;

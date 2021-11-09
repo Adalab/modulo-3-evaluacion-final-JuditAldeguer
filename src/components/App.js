@@ -36,7 +36,6 @@ function App() {
     setIsLoading(true);
     api.callToApi(pageNum).then((response) => {
       setListCharacters(response.results);
-      getFilteredData();
       setIsLoading(false);
       setSearchWord(' ');
       setSearchSpecies('');
@@ -49,7 +48,14 @@ function App() {
 
   useEffect(() => {
     getFilteredData();
-  }, [searchWord, searchSpecies, searchGender, searchStatus, searchEqual]);
+  }, [
+    listCharacters,
+    searchWord,
+    searchSpecies,
+    searchGender,
+    searchStatus,
+    searchEqual,
+  ]);
 
   //useRef
   const routeData = useRouteMatch('/character/:characterId');
