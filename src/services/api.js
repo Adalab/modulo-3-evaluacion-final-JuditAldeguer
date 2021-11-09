@@ -1,11 +1,12 @@
-// info en https://rickandmortyapi.com/documentation/#get-all-characters --> https://rickandmortyapi.com/api/character or '//raw.githubusercontent.com/Adalab/rick-y-morty/master/data/rick-y-morty.json'
+// info en https://rickandmortyapi.com/documentation/#get-all-characters --> https://rickandmortyapi.com/api/character
 
-const callToApi = () => {
-  return fetch('//rickandmortyapi.com/api/character')
+const callToApi = (pageNum) => {
+  return fetch(`//rickandmortyapi.com/api/character/?page=${pageNum}`)
     .then((response) => response.json())
     .then((response) => {
-      const result = response.results;
-      return result;
+      // const result = response.results;
+      // return result;
+      return response;
     });
 };
 

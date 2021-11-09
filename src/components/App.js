@@ -11,6 +11,7 @@ import Header from './Header';
 import Footer from './Footer';
 import CharacterDetail from './CharacterDetail';
 import Filters from './Filters';
+import NavPage from './NavPage';
 import CharacterList from './CharacterList';
 import NotFoundPage from './secondary-components/NotFoundPage';
 import Loading from './secondary-components/Loading';
@@ -26,20 +27,25 @@ function App() {
   const [searchStatus, setSearchStatus] = useState('');
   const [searchEqual, setSearchEqual] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [numberOfPages, setNumberOfPages] = useState('');
+  let pageNumCont;
+  const [pageNum, setPageNum] = useState(1);
 
   //useEffect
   useEffect(() => {
     setIsLoading(true);
-    api.callToApi().then((response) => {
-      setListCharacters(response);
+    api.callToApi(pageNum).then((response) => {
+      setListCharacters(response.results);
+      getFilteredData();
       setIsLoading(false);
       setSearchWord(' ');
       setSearchSpecies('');
       setSearchGender('');
       setSearchStatus('');
+      setNumberOfPages(response.info.pages);
       setSearchEqual(false);
     });
-  }, []);
+  }, [pageNum]);
 
   useEffect(() => {
     getFilteredData();
@@ -54,6 +60,20 @@ function App() {
   });
 
   //handles
+  const handlePrevPage = (ev) => {
+    pageNumCont = pageNum - 1;
+    setPageNum(pageNumCont);
+  };
+
+  const handleNextPage = (ev) => {
+    pageNumCont = pageNum + 1;
+    setPageNum(pageNumCont);
+  };
+
+  const handlePageInput = (value) => {
+    setPageNum(value);
+  };
+
   const handleSearch = (name, value) => {
     if (name === 'search-word') {
       setSearchWord(value);
@@ -146,10 +166,24 @@ function App() {
             searchStatus={searchStatus}
             searchEqual={searchEqual}
           />
+          <NavPage
+            pageNum={pageNum}
+            numberOfPages={numberOfPages}
+            handlePrevPage={handlePrevPage}
+            handleNextPage={handleNextPage}
+            handlePageInput={handlePageInput}
+          />
           <CharacterList
             data={filteredListCharacters}
             searchWord={searchWord}
             characterId={characterId}
+          />
+          <NavPage
+            pageNum={pageNum}
+            numberOfPages={numberOfPages}
+            handlePrevPage={handlePrevPage}
+            handleNextPage={handleNextPage}
+            handlePageInput={handlePageInput}
           />
           <Switch>
             <Route path="/" exact></Route>
