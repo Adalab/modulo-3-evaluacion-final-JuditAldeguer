@@ -5,7 +5,6 @@ const CharacterList = (props) => {
   //render
   const renderList = () => {
     return props.data.map((character) => {
-      // console.log({character.id});
       console.log(character.id);
       return (
         <li className="z_index" key={character.created}>

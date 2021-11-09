@@ -5,20 +5,16 @@ import '../styles/components/navPage.scss';
 
 const NavPage = (props) => {
   const handleChange = (ev) => {
-    if (ev.currentTarget.value > props.numberOfPages) {
-      props.handlePageInput(props.numberOfPages);
-    } else if (ev.currentTarget.value < 1) {
-      props.handlePageInput(parseInt(1));
-    } else {
-      props.handlePageInput(parseInt(ev.currentTarget.value));
-    }
+    ev.currentTarget.value > props.numberOfPages
+      ? props.handlePageInput(props.numberOfPages)
+      : props.handlePageInput(parseInt(ev.currentTarget.value));
   };
 
   return (
     <nav>
       <button
         className={props.pageNum === 1 ? 'hidden' : 'nav__button'}
-        onClick={props.pageNum === 1 ? '' : props.handlePrevPage}
+        onClick={props.handlePrevPage}
       >
         <i className="fas fa-angle-left"></i> Previous
       </button>
@@ -42,7 +38,7 @@ const NavPage = (props) => {
         className={
           props.pageNum === props.numberOfPages ? 'hidden' : 'nav__button'
         }
-        onClick={props.pageNum >= 1 ? props.handleNextPage : ''}
+        onClick={props.handleNextPage}
       >
         Next <i className="fas fa-angle-right"></i>
       </button>
